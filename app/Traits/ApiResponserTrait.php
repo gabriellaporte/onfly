@@ -40,7 +40,7 @@ trait ApiResponserTrait {
      * @param int $code             O código de retorno HTTP
      * @return JsonResponse
      */
-    protected function successWithLinks(string $message = null, mixed $data = null, int $code = 200, string $links = null): JsonResponse
+    protected function successWithLinks(string $message = null, mixed $data = null, int $code = 200, array $links = null): JsonResponse
     {
         return response()->json($this->clearArray([
             'data' => $data,

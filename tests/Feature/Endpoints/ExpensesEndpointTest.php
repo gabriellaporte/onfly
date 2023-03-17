@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Endpoints;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -9,7 +9,7 @@ use Tests\TestCase;
 class ExpensesEndpointTest extends TestCase
 {
     /**
-     * Checa se o endpoint de despesas está retornando o status 200.
+     * Checa se o endpoint de despesas está disponível
      *
      * @return void
      */
