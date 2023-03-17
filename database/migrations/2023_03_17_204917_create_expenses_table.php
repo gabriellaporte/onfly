@@ -17,7 +17,7 @@ return new class extends Migration
                 ->constrained('users')
                 ->cascadeOnDelete();
             $table->string('description');
-            $table->bigInteger('amount');
+            $table->decimal('amount', 10, 2);
             $table->timestamps();
         });
     }
