@@ -12,12 +12,23 @@ class AuthController extends Controller
 {
     use ApiResponserTrait;
 
+    /**
+     * Faz o login do usuário e retorna o token
+     *
+     * @param LoginRequest $request
+     * @return JsonResponse
+     */
     public function login(LoginRequest $request): JsonResponse
     {
         if(!Auth::attempt($request->validated(), false)) {
             return $this->error('Credenciais inválidas', 401);
         }
 
-        return $this->success('Login realizado com sucesso');
+        $token = auth()->user()->createToken('auth_token')->plainTextToken;
+
+        return $this->success('Login realizado com sucesso', [
+            'userID' => auth()->user()->id,
+            'token' => $token
+        ]);
     }
 }
