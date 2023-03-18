@@ -15,9 +15,7 @@ class UserController extends Controller
 
     public function expenses(User $user): JsonResponse
     {
-
-
-        return $this->success('Despesas do usuário ' . $user->name . ' listadas com sucesso.', [
+        return $this->success('Despesas do usuário "' . $user->name . '" listadas com sucesso.', [
             'expenses' => ExpenseResource::collection(auth()->user()->expenses),
         ]);
     }

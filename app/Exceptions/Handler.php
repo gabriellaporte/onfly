@@ -2,11 +2,16 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ApiResponserTrait;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use ApiResponserTrait;
+
     /**
      * A list of exception types with their corresponding custom log levels.
      *
@@ -45,4 +50,25 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Throwable  $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function render($request, Throwable $exception) {
+        if ($exception instanceof AuthorizationException) {
+            return $this->error('Você não tem permissão para acessar este recurso.', 403);
+        }
+
+        if($exception instanceof ModelNotFoundException) {
+            return $this->error('Recurso não encontrado.', 404);
+        }
+
+
+        return parent::render($request, $exception);
+    }
+
 }
