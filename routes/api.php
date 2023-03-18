@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->name('api.')->group(function () {
         Route::get('/{user}/expenses', [UserController::class, 'expenses'])->name('expenses');
     });
 
-    Route::resource('expenses', ExpenseController::class)->except('index');
+    Route::resource('expenses', ExpenseController::class)->except(['create', 'index', 'edit']);
 });
 
 

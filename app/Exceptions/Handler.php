@@ -61,7 +61,11 @@ class Handler extends ExceptionHandler
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function render($request, Throwable $exception) {
-        if ($exception instanceof AuthorizationException || $exception instanceof AuthenticationException) {
+        if($exception instanceof AuthenticationException) {
+            return $this->error('Você deve estar logado para fazer uma requisição.', 401);
+        }
+
+        if ($exception instanceof AuthorizationException) {
             return $this->error('Você não tem permissão para acessar este recurso.', 403);
         }
 

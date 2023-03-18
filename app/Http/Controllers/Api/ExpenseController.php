@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreExpenseRequest;
 use App\Http\Resources\ExpenseResource;
 use App\Models\Expense;
 use App\Traits\ApiResponserTrait;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
@@ -13,19 +15,18 @@ class ExpenseController extends Controller
     use ApiResponserTrait;
 
     /**
-     * Show the form for creating a new resource.
+     * Cria uma nova despesa
+     *
+     * @param Request $request
+     * @return void
      */
-    public function create()
+    public function store(StoreExpenseRequest $request): JsonResponse
     {
-        //
-    }
+        $data = $request->validated();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        $expense = Expense::create($data);
+
+        return $this->success('Despesa criada com sucesso.', new ExpenseResource($expense));
     }
 
     /**
@@ -34,14 +35,6 @@ class ExpenseController extends Controller
     public function show(Expense $expense)
     {
         return $this->success('Despesa (ID: ' . $expense->id . ') listada com sucesso.', new ExpenseResource($expense));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**

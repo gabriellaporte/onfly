@@ -16,11 +16,13 @@ class ExpenseResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'user_id' => $this->user_id,
             'description' => $this->description,
             'value' => $this->value,
             'date' => $this->created_at,
             '_links' => [
                 'self' => ['href' => route('api.expenses.show', $this->id)],
+                'user' => ['href' => route('api.users.show', $this->user_id)],
             ],
         ];
     }
