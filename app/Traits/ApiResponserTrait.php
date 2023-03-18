@@ -36,16 +36,17 @@ trait ApiResponserTrait {
      *
      * @param mixed|null $data      Os dados retornados
      * @param string|null $message  Mensagem de retorno
-     * @param string|null $links    Os links retornados (HATEOAS)
      * @param int $code             O código de retorno HTTP
+     * @param array|null $links    Os links retornados (HATEOAS)
      * @return JsonResponse
      */
-    protected function successWithLinks(string $message = null, mixed $data = null, int $code = 200, array $links = null): JsonResponse
+    protected function successWithLinks(string $message = null, mixed $data = null, array $links = null, int $code = 200): JsonResponse
     {
+        $data['links'] = $links;
+
         return response()->json($this->clearArray([
-            'data' => $data,
             'message' => $message,
-            'links' => $links
+            'data' => $this->clearArray($data),
         ]), $code);
     }
 

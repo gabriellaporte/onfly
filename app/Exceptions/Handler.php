@@ -4,8 +4,10 @@ namespace App\Exceptions;
 
 use App\Traits\ApiResponserTrait;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -59,7 +61,7 @@ class Handler extends ExceptionHandler
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function render($request, Throwable $exception) {
-        if ($exception instanceof AuthorizationException) {
+        if ($exception instanceof AuthorizationException || $exception instanceof AuthenticationException) {
             return $this->error('Você não tem permissão para acessar este recurso.', 403);
         }
 
@@ -67,6 +69,9 @@ class Handler extends ExceptionHandler
             return $this->error('Recurso não encontrado.', 404);
         }
 
+        if($exception instanceof MethodNotAllowedHttpException) {
+            return $this->error('Método não permitido.', 405);
+        }
 
         return parent::render($request, $exception);
     }

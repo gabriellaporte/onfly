@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ExpenseResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,11 @@ class ExpenseResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'description' => $this->description,
-            'value' => $this->value,
-            'date' => $this->created_at,
+            'name' => $this->name,
+            'email' => $this->email,
             '_links' => [
-                'self' => ['href' => route('api.expenses.show', $this->id)],
+                'self' => ['href' => route('api.users.show', $this->id)],
+                'expenses' => ['href' => route('api.users.expenses', $this->id)],
             ],
         ];
     }

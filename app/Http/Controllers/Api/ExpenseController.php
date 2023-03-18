@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ExpenseResource;
+use App\Models\Expense;
+use App\Traits\ApiResponserTrait;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
-    public function index()
-    {
-
-    }
+    use ApiResponserTrait;
 
     /**
      * Show the form for creating a new resource.
@@ -31,9 +31,9 @@ class ExpenseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Expense $expense)
     {
-        //
+        return $this->success('Despesa (ID: ' . $expense->id . ') listada com sucesso.', new ExpenseResource($expense));
     }
 
     /**
