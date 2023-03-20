@@ -21,10 +21,8 @@ class StoreExpenseRequest extends FormRequest
         return [
             'description' => 'required|string|max:191',
             'user_id' => 'required|integer|exists:users,id',
-            'amount' => 'required|numeric|min:0|different:0',
-            'date' => 'nullable|date_format:Y-m-d H:i:s',
-            'created_at' => 'nullable',
-            'updated_at' => 'nullable',
+            'amount' => 'required|numeric|min:0|not_in:0',
+            'date' => 'required|date_format:Y-m-d H:i:s|before_or_equal:now',
         ];
     }
 
@@ -45,8 +43,10 @@ class StoreExpenseRequest extends FormRequest
             'amount.required' => 'O valor da despesa é obrigatório.',
             'amount.numeric' => 'O valor da despesa deve ser um número.',
             'amount.min' => 'O valor da despesa deve ser maior que 0.',
-            'amount.different' => 'O valor da despesa deve ser maior que 0.',
-            'date.date_format' => 'O valor da despesa deve estar no formato Y-m-d H:i:s.',
+            'amount.not_in' => 'O valor da despesa deve ser maior que 0.',
+            'date.required' => 'A data da despesa é obrigatória.',
+            'date.date_format' => 'A data da despesa deve estar no formato Y-m-d H:i:s.',
+            'date.before_or_equal' => 'A data da despesa não pode ser futura.',
         ];
     }
 
@@ -59,8 +59,7 @@ class StoreExpenseRequest extends FormRequest
     {
         $this->merge([
             'user_id' => $this->user()->id,
-            'created_at' => $this->date ?? now()->format('Y-m-d H:i:s'),
-            'updated_at' => $this->date ?? now()->format('Y-m-d H:i:s'),
+            'date' => $this->date ?? now()->format('Y-m-d H:i:s'),
         ]);
     }
 }

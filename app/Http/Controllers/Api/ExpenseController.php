@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreExpenseRequest;
+use App\Http\Requests\UpdateExpenseRequest;
 use App\Http\Resources\ExpenseListResource;
 use App\Http\Resources\ExpenseResource;
 use App\Models\Expense;
@@ -26,9 +27,9 @@ class ExpenseController extends Controller
     }
 
     /**
-     * Cria uma nova despesa
+     * Cria uma nova despesa vinculada ao usuário logado
      *
-     * @param Request $request
+     * @param StoreExpenseRequest $request
      * @return void
      */
     public function store(StoreExpenseRequest $request): JsonResponse
@@ -36,13 +37,16 @@ class ExpenseController extends Controller
         $expense = Expense::create($request->validated());
 
         return $this->success('Despesa criada com sucesso.',
-            (new ExpenseResource($expense)));
+            (new ExpenseResource($expense)), 201);
     }
 
     /**
-     * Display the specified resource.
+     * Mostra uma despesa específica
+     *
+     * @param Expense $expense
+     * @return JsonResponse
      */
-    public function show(Expense $expense)
+    public function show(Expense $expense): JsonResponse
     {
         return $this->success('Despesa listada com sucesso.',
             (new ExpenseListResource($expense))
@@ -50,11 +54,19 @@ class ExpenseController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Faz a atualização de uma despesa específica
+     *
+     * @param UpdateExpenseRequest $request
+     * @param Expense $expense
+     * @return void
      */
-    public function update(Request $request, Expense $expense)
+    public function update(UpdateExpenseRequest $request, Expense $expense): JsonResponse
     {
-        //
+        $expense->update($request->validated());
+
+        return $this->success('Despesa atualizada com sucesso.',
+            (new ExpenseResource($expense))
+        );
     }
 
     /**
@@ -62,6 +74,6 @@ class ExpenseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
     }
 }

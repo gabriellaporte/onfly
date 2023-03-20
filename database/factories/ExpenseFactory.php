@@ -17,14 +17,11 @@ class ExpenseFactory extends Factory
      */
     public function definition(): array
     {
-        $randomDate = fake()->dateTimeBetween('-1 year', 'now');
-
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'description' => fake()->sentence(),
             'amount' => fake()->randomFloat(2, 100, 10000),
-            'created_at' => $randomDate,
-            'updated_at' => $randomDate,
+            'date' => fake()->dateTimeBetween('-1 year', 'now')
         ];
     }
 }
