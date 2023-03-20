@@ -72,8 +72,10 @@ class ExpenseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Expense $expense): JsonResponse
     {
+        $expense->delete();
 
+        return $this->success('Despesa removida com sucesso.');
     }
 }

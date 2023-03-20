@@ -48,7 +48,7 @@ class UpdateExpenseRequest extends FormRequest
     }
 
     /**
-     * Atribui ao FormRequest as regras de validação de acordo com o método HTTP
+     * Atribui ao FormRequest as regras de validação conforme o método HTTP
      *
      * @return array
      */
@@ -76,7 +76,7 @@ class UpdateExpenseRequest extends FormRequest
     }
 
     /**
-     * Regras relacionadas à atualização parcial de uma despesa  (PATCH)
+     * Regras relacionadas à atualização parcial de uma despesa (PATCH)
      *
      * @return string[]
      */
