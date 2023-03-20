@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\ApiResponserTrait;
 use Illuminate\Http\JsonResponse;
@@ -42,7 +43,8 @@ class AuthController extends Controller
 
         return $this->success('Usuário criado com sucesso', [
             'userID' => $user->id,
-            'token' => $token
-        ]);
+            'token' => $token,
+            'userInfo' => (new UserResource($user))
+        ], 201);
     }
 }
