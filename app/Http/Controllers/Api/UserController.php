@@ -8,7 +8,6 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\ApiResponserTrait;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -16,7 +15,19 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('can:view,user');
+        $this->authorizeResource(User::class, 'user');
+    }
+
+    /**
+     * Adiciona o método expenses ao mapeamento da função authorizeResource, usada no construtor
+     *
+     * @return array
+     */
+    protected function resourceAbilityMap(): array
+    {
+        return array_merge(parent::resourceAbilityMap(), [
+            'expenses' => 'view'
+        ]);
     }
 
     /**

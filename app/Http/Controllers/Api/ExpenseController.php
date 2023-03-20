@@ -22,7 +22,7 @@ class ExpenseController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('can:view,expense')->only(['show']); // ExpensePolicy@view
+        $this->authorizeResource(Expense::class, 'expense'); // App\Policies\ExpensePolicy
     }
 
     /**
@@ -52,7 +52,7 @@ class ExpenseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Expense $expense)
     {
         //
     }

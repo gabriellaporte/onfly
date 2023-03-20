@@ -4,8 +4,13 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreExpenseRequest extends FormRequest
+class UpdateExpenseRequest extends FormRequest
 {
+    /**
+     * Autoriza a requisição
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return true;
@@ -18,20 +23,13 @@ class StoreExpenseRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'description' => 'required|string|max:191',
-            'user_id' => 'required|integer|exists:users,id',
-            'amount' => 'required|numeric|min:0|different:0',
-            'date' => 'nullable|date_format:Y-m-d H:i:s',
-            'created_at' => 'nullable',
-            'updated_at' => 'nullable',
-        ];
+        $this->resolveRulesForMethod();
     }
 
     /**
      * Mensagens de erro
      *
-     * @return array
+     * @return string[]
      */
     public function messages(): array
     {
@@ -47,6 +45,7 @@ class StoreExpenseRequest extends FormRequest
             'amount.min' => 'O valor da despesa deve ser maior que 0.',
             'amount.different' => 'O valor da despesa deve ser maior que 0.',
             'date.date_format' => 'O valor da despesa deve estar no formato Y-m-d H:i:s.',
+
         ];
     }
 
@@ -62,5 +61,53 @@ class StoreExpenseRequest extends FormRequest
             'created_at' => $this->date ?? now()->format('Y-m-d H:i:s'),
             'updated_at' => $this->date ?? now()->format('Y-m-d H:i:s'),
         ]);
+    }
+
+    /**
+     * Atribui ao FormRequest as regras de validação de acordo com o método HTTP
+     *
+     * @return array
+     */
+    private function resolveRulesForMethod(): array
+    {
+        if($this->isMethod('PUT')) {
+            return $this->putRules();
+        }
+
+        return $this->patchRules();
+    }
+
+    /**
+     * Regras relacionadas à atualização completa de uma despesa (PUT)
+     *
+     * @return string[]
+     */
+    private function putRules(): array
+    {
+        return [
+            'description' => 'required|string|max:191',
+            'user_id' => 'required|integer|exists:users,id',
+            'amount' => 'required|numeric|min:0|different:0',
+            'date' => 'nullable|date_format:Y-m-d H:i:s',
+            'created_at' => 'nullable',
+            'updated_at' => 'nullable',
+        ];
+    }
+
+    /**
+     * Regras relacionadas à atualização parcial de uma despesa  (PATCH)
+     *
+     * @return string[]
+     */
+    private function patchRules(): array
+    {
+        return [
+            'description' => 'nullable|string|max:191',
+            'user_id' => 'nullable|integer|exists:users,id',
+            'amount' => 'nullable|numeric|min:0|different:0',
+            'date' => 'nullable|date_format:Y-m-d H:i:s',
+            'created_at' => 'nullable',
+            'updated_at' => 'nullable',
+        ];
     }
 }
