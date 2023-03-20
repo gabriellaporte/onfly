@@ -4,10 +4,11 @@ namespace App\Traits;
 
 /*
 |--------------------------------------------------------------------------
-| Api Responser Trait
+| ApiResponserTrait - Trait para padronizar as respostas JSON ao Client
 |--------------------------------------------------------------------------
 |
-| Esta trait será usada para padronizar as responses ao Client
+| Esta trait será usada para padronizar as responses a uma requisição feita,
+| muitas vezes seguindo o padrão de arquitetura REST (HATEOAS, etc.)
 |
 */
 
@@ -28,25 +29,6 @@ trait ApiResponserTrait {
         return response()->json($this->clearArray([
             'message' => $message,
             'data' => $data
-        ]), $code);
-    }
-
-    /**
-     * Retorna uma response de sucesso ao usuário com links (segundo o padrão HATEOAS)
-     *
-     * @param mixed|null $data      Os dados retornados
-     * @param string|null $message  Mensagem de retorno
-     * @param int $code             O código de retorno HTTP
-     * @param array|null $links    Os links retornados (HATEOAS)
-     * @return JsonResponse
-     */
-    protected function successWithLinks(string $message = null, mixed $data = null, array $links = null, int $code = 200): JsonResponse
-    {
-        $data['links'] = $links;
-
-        return response()->json($this->clearArray([
-            'message' => $message,
-            'data' => $this->clearArray($data),
         ]), $code);
     }
 

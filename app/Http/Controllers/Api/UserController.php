@@ -9,17 +9,31 @@ use App\Models\User;
 use App\Traits\ApiResponserTrait;
 use Illuminate\Http\JsonResponse;
 
+/*
+|--------------------------------------------------------------------------
+| UserController - Requisições relacionadas ao usuário
+|--------------------------------------------------------------------------
+|
+| Aqui é o Controller responsável por lidar com as requisições para um user,
+| com funções simples, como listar informações e despesas do usuário. Se
+| você procura por funções de autenticação, veja AuthController.
+|
+*/
+
 class UserController extends Controller
 {
     use ApiResponserTrait;
 
+    /**
+     * Construtor do Controller, distribui as permissões de acesso (ACL) para as funções
+     */
     public function __construct()
     {
-        $this->authorizeResource(User::class, 'user');
+        $this->authorizeResource(User::class, 'user'); // App\Policies\UserPolicy
     }
 
     /**
-     * Adiciona o método expenses ao mapeamento da função authorizeResource, usada no construtor
+     * Adiciona o método "expenses" ao mapeamento da função authorizeResource, usada no construtor
      *
      * @return array
      */
@@ -33,8 +47,8 @@ class UserController extends Controller
     /**
      * Lista as informações do usuário
      *
-     * @param User $user
-     * @return JsonResponse
+     * @param User $user        [Usuário]
+     * @return JsonResponse     [Informações do usuário, UserResource]
      */
     public function show(User $user): JsonResponse
     {
@@ -46,8 +60,8 @@ class UserController extends Controller
     /**
      * Lista as despesas do usuário
      *
-     * @param User $user        Usuário
-     * @return JsonResponse     Lista de despesas do usuário
+     * @param User $user        [Usuário]
+     * @return JsonResponse     [Lista de despesas do usuário, ExpenseResource (Collection)]
      */
     public function expenses(User $user): JsonResponse
     {

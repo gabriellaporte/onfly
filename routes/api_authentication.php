@@ -5,12 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| API Authentication Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
+| Aqui é onde você pode registrar rotas de autenticação na API para o app
+| Onfly. Essas rotas são carregadas pelo RouteServiceProvider e todas
+| elas serão atribuídas ao grupo de middleware "api" e "json.response".
 |
 */
 

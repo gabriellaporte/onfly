@@ -12,12 +12,23 @@ use App\Traits\ApiResponserTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/*
+|--------------------------------------------------------------------------
+| ExpenseController - Requisições relacionadas às despesas (CRUD)
+|--------------------------------------------------------------------------
+|
+| Aqui é o Controller responsável por lidar com as requisições para despesas,
+| estando a cargo do CRUD principal da API. Todas as funções retornam um JSON
+| seguindo o padrão da trait ApiResponserTrait, com as melhores práticas.
+|
+*/
+
 class ExpenseController extends Controller
 {
     use ApiResponserTrait;
 
     /**
-     * Middlewares de da ExpensePolicy para cada método, visto que a rota é resource
+     * Construtor do Controller, distribui as permissões de acesso (ACL) para as funções
      *
      * @return void
      */
@@ -27,10 +38,10 @@ class ExpenseController extends Controller
     }
 
     /**
-     * Cria uma nova despesa vinculada ao usuário logado
+     * Cria uma nova despesa vinculada ao usuário logado. Emite o evento ExpenseCreatedEvent
      *
-     * @param StoreExpenseRequest $request
-     * @return void
+     * @param StoreExpenseRequest $request  [Form Request com as regras de validação]
+     * @return JsonResponse
      */
     public function store(StoreExpenseRequest $request): JsonResponse
     {
@@ -43,7 +54,7 @@ class ExpenseController extends Controller
     /**
      * Mostra uma despesa específica
      *
-     * @param Expense $expense
+     * @param Expense $expense  [Despesa a ser listada]
      * @return JsonResponse
      */
     public function show(Expense $expense): JsonResponse
@@ -54,11 +65,11 @@ class ExpenseController extends Controller
     }
 
     /**
-     * Faz a atualização de uma despesa específica
+     * Faz a atualização de uma despesa específica. Aceita PUT e PATCH
      *
-     * @param UpdateExpenseRequest $request
-     * @param Expense $expense
-     * @return void
+     * @param UpdateExpenseRequest $request [Form Request com as regras de validação]
+     * @param Expense $expense  [Despesa a ser atualizada]
+     * @return JsonResponse
      */
     public function update(UpdateExpenseRequest $request, Expense $expense): JsonResponse
     {
@@ -70,7 +81,10 @@ class ExpenseController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Deleta uma despesa específica
+     *
+     * @param Expense $expense  [Despesa a ser deletada]
+     * @return JsonResponse
      */
     public function destroy(Expense $expense): JsonResponse
     {

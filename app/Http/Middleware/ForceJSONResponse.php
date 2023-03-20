@@ -9,9 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 class ForceJSONResponse
 {
     /**
-     * Handle an incoming request.
+     * Middleware para forçar a resposta da API em JSON, já que o Laravel não faz isso por padrão.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param Request $request
+     * @param Closure $next
+     * @return Response
      */
     public function handle(Request $request, Closure $next): Response
     {

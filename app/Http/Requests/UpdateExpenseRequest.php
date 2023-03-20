@@ -4,6 +4,18 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/*
+|--------------------------------------------------------------------------
+| UpdateExpenseRequest - Validação para o update completo ou parcial de
+| despesas (PUT e PATCH)
+|--------------------------------------------------------------------------
+|
+| Form Request responsável por validar a criação de despesas. Note haver
+| funções para lidar com o método HTTP da requisição, que pode ser tanto
+| PUT quanto PATCH, já que o Laravel não diferencia a rota resource.
+|
+*/
+
 class UpdateExpenseRequest extends FormRequest
 {
     /**

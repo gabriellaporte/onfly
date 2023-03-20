@@ -8,6 +8,16 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 
+/*
+|--------------------------------------------------------------------------
+| LoginRequest - Validação para o login
+|--------------------------------------------------------------------------
+|
+| Este é o Form Request responsável por lidar com as requisições para o login.
+| Todas as regras estão descritas nos métodos e comentários.
+|
+*/
+
 class LoginRequest extends FormRequest
 {
     use ApiResponserTrait;
@@ -23,7 +33,7 @@ class LoginRequest extends FormRequest
     }
 
     /**
-     * Regras de validação para o login
+     * Regras de validação
      *
      * @return array
      */
@@ -36,7 +46,7 @@ class LoginRequest extends FormRequest
     }
 
     /**
-     * Mensagens de erro para o login
+     * Mensagens de erro
      *
      * @return array
      */

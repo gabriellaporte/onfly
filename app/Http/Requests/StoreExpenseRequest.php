@@ -4,6 +4,17 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/*
+|--------------------------------------------------------------------------
+| StoreExpenseRequest - Validação para a criação de despesas
+|--------------------------------------------------------------------------
+|
+| Este é o Form Request responsável por lidar com as requisições para a
+| criação de despesas. Todas as regras estão descritas nos métodos e
+| comentários.
+|
+*/
+
 class StoreExpenseRequest extends FormRequest
 {
     /**
@@ -56,7 +67,7 @@ class StoreExpenseRequest extends FormRequest
     }
 
     /**
-     * Prepara as entradas para validação
+     * Prepara as entradas para validação, seta o usuário e a data (caso não tenha, seta a data atual)
      *
      * @return void
      */

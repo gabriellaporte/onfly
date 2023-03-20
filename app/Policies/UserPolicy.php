@@ -5,6 +5,16 @@ namespace App\Policies;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
+/*
+|--------------------------------------------------------------------------
+| UserPolicy - ACL para o model User (usuários)
+|--------------------------------------------------------------------------
+|
+| Esta Policy controla o acesso aos recursos do model User, sendo
+| limitados aos próprios usuários.
+|
+*/
+
 class UserPolicy
 {
     /**

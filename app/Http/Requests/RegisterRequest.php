@@ -4,6 +4,16 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/*
+|--------------------------------------------------------------------------
+| RegisterRequest - Validação para o registro
+|--------------------------------------------------------------------------
+|
+| Este é o Form Request responsável por lidar com as requisições para o
+| registro. Todas as regras estão descritas nos métodos e comentários.
+|
+*/
+
 class RegisterRequest extends FormRequest
 {
     /**

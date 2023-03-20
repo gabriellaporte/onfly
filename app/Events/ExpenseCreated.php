@@ -11,12 +11,25 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
+/*
+|--------------------------------------------------------------------------
+| ExpenseCreated - Evento de criação de despesa (store)
+|--------------------------------------------------------------------------
+|
+| Este é o Event que é disparado após a criação de uma despesa no método
+| ExpenseController@store. Ele é responsável por encapsular a despesa e
+| enviá-la para o Listener SendRegisteredExpenseNotification, que irá
+| cuidar do restante do processo (notificações).
+*/
+
 class ExpenseCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * Create a new event instance.
+     * Construtor do evento
+     *
+     * @param Expense $expense  [Property promotion da Despesa]
      */
     public function __construct(public Expense $expense)
     {

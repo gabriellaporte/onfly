@@ -8,6 +8,17 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
+/*
+|--------------------------------------------------------------------------
+| RegisteredExpenseNotification - Notificação para envio de e-mail
+|--------------------------------------------------------------------------
+|
+| Esta Notification é chamada pelo Evento ExpenseCreated, e é responsável
+| por enviar um e-mail para o usuário que cadastrou uma despesa de forma
+| assíncrona utilizando as queues do Laravel.
+|
+*/
+
 class RegisteredExpenseNotification extends Notification implements ShouldQueue
 {
     use Queueable;

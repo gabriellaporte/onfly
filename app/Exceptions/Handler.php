@@ -54,11 +54,12 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * Render an exception into an HTTP response.
+     * Tratativa para erros, retornando um JSON para casos específicos.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param $request
+     * @param Throwable $exception
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
+     * @throws Throwable
      */
     public function render($request, Throwable $exception) {
         if($exception instanceof AuthenticationException) {

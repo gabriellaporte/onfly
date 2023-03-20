@@ -6,6 +6,16 @@ use App\Models\Expense;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
+/*
+|--------------------------------------------------------------------------
+| ExpensePolicy - ACL para o model Expenses (despesas)
+|--------------------------------------------------------------------------
+|
+| Esta Policy controla o acesso aos recursos do model Expense, que são
+| limitados aos usuários relacionados a esta mesma despesa.
+|
+*/
+
 class ExpensePolicy
 {
     /**

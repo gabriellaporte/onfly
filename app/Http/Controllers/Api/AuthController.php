@@ -11,6 +11,17 @@ use App\Traits\ApiResponserTrait;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
+/*
+|--------------------------------------------------------------------------
+| AuthController - Autenticação de usuários na API
+|--------------------------------------------------------------------------
+|
+| Aqui é o Controller responsável por lidar com as requisições para login e
+| registro na API da Onfly. Essas funções são acessadas pelas rotas de API
+| em routes/api_authentication.php.
+|
+*/
+
 class AuthController extends Controller
 {
     use ApiResponserTrait;
@@ -18,7 +29,7 @@ class AuthController extends Controller
     /**
      * Faz o login do usuário e retorna o token
      *
-     * @param LoginRequest $request
+     * @param LoginRequest $request     [Form Request com as regras de validação]
      * @return JsonResponse
      */
     public function login(LoginRequest $request): JsonResponse
@@ -35,6 +46,12 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Faz o registro, login e retorna o token e informações do usuário
+     *
+     * @param RegisterRequest $request  [Form Request com as regras de validação]
+     * @return JsonResponse
+     */
     public function register(RegisterRequest $request): JsonResponse
     {
         $user = User::create($request->validated());
