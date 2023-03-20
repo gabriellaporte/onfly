@@ -4,7 +4,9 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use App\Models\Expense;
+use App\Models\User;
 use App\Policies\ExpensePolicy;
+use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,7 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        Expense::class => ExpensePolicy::class
+        User::class => UserPolicy::class,
+        Expense::class => ExpensePolicy::class,
     ];
 
     /**
@@ -24,8 +27,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('see-user', function ($user, $userToSee) {
-            return $user->id === $userToSee->id;
-        });
+
     }
 }

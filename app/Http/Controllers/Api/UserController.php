@@ -14,6 +14,11 @@ class UserController extends Controller
 {
     use ApiResponserTrait;
 
+    public function __construct()
+    {
+        $this->middleware('can:view,user');
+    }
+
     /**
      * Lista as informações do usuário
      *
@@ -22,7 +27,7 @@ class UserController extends Controller
      */
     public function show(User $user): JsonResponse
     {
-        return $this->success('Usuário "' . $user->name . '" listado com sucesso.',
+        return $this->success('Usuário listado com sucesso.',
             (new UserResource($user))
         );
     }
@@ -35,8 +40,8 @@ class UserController extends Controller
      */
     public function expenses(User $user): JsonResponse
     {
-        return $this->success('Despesas do usuário "' . $user->name . '" listadas com sucesso.', [
-            'expenses' => ExpenseResource::collection(auth()->user()->expenses)
+        return $this->success('Despesas do usuário listadas com sucesso.', [
+            'expenses' => ExpenseResource::collection($user->expenses)
         ]);
     }
 }

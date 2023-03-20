@@ -21,12 +21,12 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->name('api.')->group(function () {
 
-    Route::prefix('users')->name('users.')->middleware('can:see-user,user')->group(function () {
-        Route::get('/{user}', [UserController::class, 'show'])->middleware('can:see-user,user')->name('show');
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/{user}', [UserController::class, 'show'])->name('show');
         Route::get('/{user}/expenses', [UserController::class, 'expenses'])->name('expenses');
     });
 
-    Route::resource('expenses', ExpenseController::class)->except(['create', 'index', 'edit']);
+    Route::apiResource('expenses', ExpenseController::class);
 });
 
 
