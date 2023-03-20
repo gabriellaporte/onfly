@@ -22,7 +22,9 @@ class UserController extends Controller
      */
     public function show(User $user): JsonResponse
     {
-        return $this->success('Usuário "' . $user->name . '" listado com sucesso.', new UserResource($user));
+        return $this->success('Usuário "' . $user->name . '" listado com sucesso.',
+            (new UserResource($user))
+        );
     }
 
     /**

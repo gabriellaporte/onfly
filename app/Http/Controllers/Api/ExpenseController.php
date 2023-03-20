@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreExpenseRequest;
+use App\Http\Resources\ExpenseListResource;
 use App\Http\Resources\ExpenseResource;
 use App\Models\Expense;
 use App\Traits\ApiResponserTrait;
@@ -15,6 +16,16 @@ class ExpenseController extends Controller
     use ApiResponserTrait;
 
     /**
+     * Middlewares de da ExpensePolicy para cada método, visto que a rota é resource
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('can:view,expense')->only(['show']); // ExpensePolicy@view
+    }
+
+    /**
      * Cria uma nova despesa
      *
      * @param Request $request
@@ -22,11 +33,10 @@ class ExpenseController extends Controller
      */
     public function store(StoreExpenseRequest $request): JsonResponse
     {
-        $data = $request->validated();
+        $expense = Expense::create($request->validated());
 
-        $expense = Expense::create($data);
-
-        return $this->success('Despesa criada com sucesso.', new ExpenseResource($expense));
+        return $this->success('Despesa criada com sucesso.',
+            (new ExpenseResource($expense)));
     }
 
     /**
@@ -34,7 +44,9 @@ class ExpenseController extends Controller
      */
     public function show(Expense $expense)
     {
-        return $this->success('Despesa (ID: ' . $expense->id . ') listada com sucesso.', new ExpenseResource($expense));
+        return $this->success('Despesa listada com sucesso.',
+            (new ExpenseListResource($expense))
+        );
     }
 
     /**
