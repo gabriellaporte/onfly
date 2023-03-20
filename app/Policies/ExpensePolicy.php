@@ -13,7 +13,7 @@ class ExpensePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -53,7 +53,7 @@ class ExpensePolicy
      */
     public function restore(User $user, Expense $expense): bool
     {
-        //
+        return $user->id == $expense->user_id;
     }
 
     /**
@@ -61,6 +61,6 @@ class ExpensePolicy
      */
     public function forceDelete(User $user, Expense $expense): bool
     {
-        //
+        return $user->id == $expense->user_id;
     }
 }

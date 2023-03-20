@@ -6,6 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreExpenseRequest extends FormRequest
 {
+    /**
+     * Autoriza a requisição
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return true;

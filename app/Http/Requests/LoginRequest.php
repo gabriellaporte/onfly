@@ -12,6 +12,11 @@ class LoginRequest extends FormRequest
 {
     use ApiResponserTrait;
 
+    /**
+     * Autoriza a requisição
+     *
+     * @return bool
+     */
     public function authorize(): bool
     {
         return true;
@@ -38,9 +43,9 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'email.required' => 'O campo "email" é obrigatório',
-            'email.email' => 'O campo "email" deve ser um e-mail válido',
-            'password.required' => 'O campo "senha" é obrigatório'
+            'email.required' => 'O campo email é obrigatório',
+            'email.email' => 'O campo email deve ser um e-mail válido',
+            'password.required' => 'O campo senha é obrigatório'
         ];
     }
 
