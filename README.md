@@ -30,7 +30,7 @@
 >
 > A proposta é uma API, seguindo a arquitetura REST, que deverá conter um CRUD simples de despesas relacionadas a um usuário.
 >
-> E isso qualquer um faz. O diferencial do projeto, é que ele desenvolvido e pensado totalmente em: usar <b>Design Patterns</b>, seguir as boas práticas de <b>Clean Code</b> (SOLID, Object Calisthenics, etc.), seguir a filosofia <b>TDD</b> (Test Driven Development) e muito mais.
+> E isso qualquer um faz. O diferencial do projeto, é que ele desenvolvido e pensado totalmente em: usar <b>Design Patterns</b>, seguir as boas práticas de <b>Clean Code</b> (SOLID, Object Calisthenics, etc.) e muito mais.
 > Um outro foco do projeto foi fazer a documentação e a aplicação de comentários de forma organizada, tanto no código, quanto neste README que você está acessando, quanto em outros locais, como o Postman (documentação da API, requests prontos), etc.
 
 <br />
@@ -72,14 +72,14 @@ git clone https://github.com/gabriellaporte/onfly.git .
 cp .env.example .env
 ```
 
-- Gere uma chave (APP_KEY) no seu .env
-```
-php artisan key:generate
-```
-
 - Instale todas as dependências e pacotes necessários para o projeto poder rodar:
 ```
 composer update
+```
+
+- Gere uma chave (APP_KEY) no seu .env
+```
+php artisan key:generate
 ```
 
 - Se você estiver no Linux, MacOS ou no WSL2 pelo Windows, você pode facilmente ligar o projeto utilizando:
