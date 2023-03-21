@@ -90,6 +90,6 @@ class ExpenseController extends Controller
     {
         $expense->delete();
 
-        return $this->success('Despesa removida com sucesso.');
+        return $this->success('Despesa removida com sucesso.', null, 204);
     }
 }
