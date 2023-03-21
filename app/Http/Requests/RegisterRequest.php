@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\ApiResponserTrait;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\JsonResponse;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +20,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
 {
+    use ApiResponserTrait;
+
     /**
      * Autoriza a requisição
      *
@@ -58,5 +64,18 @@ class RegisterRequest extends FormRequest
             'password.min' => 'A senha deve ter no mínimo 8 caracteres',
             'password.max' => 'A senha deve ter no máximo 255 caracteres',
         ];
+    }
+
+    /**
+     * Retorna uma resposta de erro para o usuário, caso a validação falhe
+     *
+     * @param Validator $validator
+     * @return JsonResponse
+     */
+    protected function failedValidation(Validator $validator): JsonResponse
+    {
+        throw new HttpResponseException(
+            $this->error('Erro de validação', 422, $validator->errors()->toArray())
+        );
     }
 }
