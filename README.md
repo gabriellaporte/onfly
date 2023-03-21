@@ -3,7 +3,7 @@
   Onfly Rest | API Rest
 </h1>
 <p align="center">
-    Um teste técnico com <b>backend</b> (Laravel), <b>ambiente de desenvolvimento facilitado</b> (Docker, Sail), <b>requisições prontas</b> (Insomnia) e <b>documentação impecável</b> (Swagger).
+    Um teste técnico com <b>backend</b> (Laravel), <b>ambiente de desenvolvimento facilitado</b> (Docker, Sail), <b>requisições prontas</b> e <b>documentação impecável</b> (Postman).
     <br/>
     <br/>
     Código <b>limpo</b>, <b>bem feito</b>, bem <b>documentado</b> e <b>performático</b>! É tudo isso e mais um pouco.
@@ -15,9 +15,11 @@
 
 <div align="center">
 
-**[FILOSOFIA DO PROJETO](https://github.com/gabriellaporte/onfly) •
-[TECH STACK](https://github.com/gabriellaporte/onfly) •
-[CONSIDERAÇÕES FINAIS](https://github.com/gabriellaporte/onfly)**
+**[FILOSOFIA DO PROJETO](https://github.com/gabriellaporte/onfly#-filosofia-do-projeto) •
+[TECH STACK](https://github.com/gabriellaporte/onfly#-tech-stack) •
+[COMO INSTALAR](https://github.com/gabriellaporte/onfly#%EF%B8%8F-como-instalar) •
+[DOCUMENTAÇÃO E API](https://github.com/gabriellaporte/onfly#-documenta%C3%A7%C3%A3o-e-api) •
+[CONSIDERAÇÕES FINAIS](https://github.com/gabriellaporte/onfly#-considerações-finais)**
 
 </div>
 
@@ -29,7 +31,7 @@
 > A proposta é uma API, seguindo a arquitetura REST, que deverá conter um CRUD simples de despesas relacionadas a um usuário.
 >
 > E isso qualquer um faz. O diferencial do projeto, é que ele desenvolvido e pensado totalmente em: usar <b>Design Patterns</b>, seguir as boas práticas de <b>Clean Code</b> (SOLID, Object Calisthenics, etc.), seguir a filosofia <b>TDD</b> (Test Driven Development) e muito mais.
-> Um outro foco do projeto foi fazer a documentação e a aplicação de comentários de forma organizada, tanto no código, quanto neste README que você está acessando, quanto em outros locais, como o Swagger (documentação da API), etc.
+> Um outro foco do projeto foi fazer a documentação e a aplicação de comentários de forma organizada, tanto no código, quanto neste README que você está acessando, quanto em outros locais, como o Postman (documentação da API, requests prontos), etc.
 
 <br />
 
@@ -39,13 +41,14 @@ Aqui está uma breve visão geral de alto nível da Tech Stack utilizada no proj
 <br /><br />
 
 
-- Este projeto utiliza [o framework Laravel](https://laravel.com). Laravel é um framework backend em PHP poderosíssimo que segue a arquitetura MVC, deixando o desenvolvedor livre do fardo de lidar com "pequenos detalhes" de uma aplicação.
+- Este projeto utiliza o [framework Laravel](https://laravel.com). Laravel é um framework backend em PHP poderosíssimo que segue a arquitetura MVC, deixando o desenvolvedor livre do fardo de lidar com "pequenos detalhes" de uma aplicação.
 - Como banco de dados, o projeto utiliza o [MySQL](https://www.mysql.com), mas pode facilmente ser adaptado a outros RDBMS.
 - Para os testes, é utilizado o [PHPUnit](https://phpunit.de), que já está incluido no Laravel.
 - Para o versionamento, foi utilizado o CVS [Git](https://git-scm.com).
 - Para o set-up no ambiente de desenvolvimento, foi utilizado o [Docker](https://www.docker.com) com o [Sail](https://laravel.com/docs/10.x/sail) (já incluso no Laravel)
 - Para o servidor de e-mail, foi utilizado o [MailHog](https://github.com/mailhog/MailHog).
 - Claramente, devido à necessidade de ferramentas de alto-nível, foi utilizado o Linux, com a distro [Ubuntu](https://ubuntu.com).
+- Para gerar documentação e ter uma Collection pronta para uso da API, foi utilizado o [Postman](https://www.postman.com/).
 
 <br />
 
@@ -99,3 +102,59 @@ sail artisan queue:work
 > 📩 Você pode acessar o envio de e-mails [aqui](http://localhost:8025), com o Docker/Sail. Ou sinta-se livre para configurar um novo em .env.
 
 ✅ Pronto! Agora você está pronto para usar o projeto na sua máquina com essas etapas simples.
+
+<br />
+
+# 📃 Documentação e API
+<br>
+
+O uso do [Postman](https://www.postman.com/) é extremamente encorajado, uma vez que a documentação e os recursos prontos estão disponíveis de modo fácil e rápido lá.
+
+- Toda a documentação está disponível em https://documenter.getpostman.com/view/25007742/2s93K1pzYM, e você pode acessá-la para entender um pouco mais de como o sistema funciona.
+- [Clique aqui para baixar](https://drive.google.com/file/d/1RlalOQHGfhJO-irNlZuxPEC6Y9tdNzfA/view?usp=sharing) os recursos já pré-definidos e prontos no Postman. Importe o arquivo no seu cliente ou na web.
+
+> Se você tem alguma dúvida sobre o import/export no Postman, você pode consultar [este guia](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/).
+
+Os scripts já estão devidamente configurados para setar os headers, token, ID de usuário, data atual, etc. de maneira automática. É só baixar e usar! 🚀
+
+<br />
+
+# 👋 Considerações Finais
+<br>
+
+Os requisitos do projeto foram poucos, por ser uma API Rest bastante enxuta e com poucas necessidades. No entanto, o projeto teve o máximo de capricho e utilizou de ferramentas/técnicas como (clique nos links para ver o processo de desenvolvimento):
+
+- [Whimiscal](https://whimsical.com/diagrama-de-banco-de-dados-onfly-rest-L2qukKgZrpHTNSXGaMz2Dt) para planejamento do schema de banco de dados;
+- PHPUnit para testes unitários e de features (`sail artisan test`);
+- [Trello](https://trello.com/invite/b/D7Ud8L0i/ATTIab29113f3447ebb863bcde2af33e53c999744EAF/dev-tasks) para metodologia ágil Kanban;
+- Clean Code e Clean Architecture (SOLID, Object Calisthenics, etc.);
+- Design Patterns (Builder, Facade, Strategy, Repository, etc.);
+- API Resources;
+- Route Resources;
+- Middlewares;
+- Policies para ACL;
+- Events e Listeners;
+- Notifications;
+- Queues;
+- Exception Handlers;
+- Traits;
+- Form Requests;
+- Providers (EventServiceProvider e RouteServiceProvider customizados)
+- Muito mais... 🚀
+
+> ❌ Alguns outros conceitos como Services, Factory, etc. poderiam ser aplicados, mas não houve a necessidade. [Saiba um pouco mais de overengineering](https://musli.hashnode.dev/laravel-lesson-of-the-week-how-to-avoid-over-engineering) e o porquê de evitar a aplicação de alguns conceitos desnecessários.
+
+> 🔎 Além do mais, na API, poderíamos ter usado filtros, paginação, ordenação (sort) etc. facilmente com pacotes como o [Laravel Query Builder by Spatie](https://spatie.be/index.php/docs/laravel-query-builder/v5/introduction); porém não foi informado como requisito no Teste Técnico.
+
+<br />
+
+# 💙 Agradecimentos
+<br>
+
+Em primeiro lugar, a Deus. SDG! Em segundo lugar, à minha melhor amiga e amada noiva: Ana. Em terceiro lugar, à minha família e amigos. Todos me deram o devido suporte em cada etapa, incluindo todo o desenvolvimento deste Teste Técnico.
+
+Também, aos funcionários da Onfly: por me "emprestarem" o seu precioso tempo em analisar esse projeto (agradecimentos especiais à Selena, que tão gentilmente me incluiu no processo).
+
+<br>
+
+💡 "O gênio é 1% de inspiração e 99% de transpiração" - Thomas Edison.
