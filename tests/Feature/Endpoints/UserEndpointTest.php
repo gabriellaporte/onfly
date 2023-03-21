@@ -16,7 +16,7 @@ class UserEndpointTest extends TestCase
      *
      * @return void
      */
-    public function test_get_user_endpoint(): void
+    public function test_get_user_endpoint_ok(): void
     {
         $user = User::factory()->create();
 
@@ -37,4 +37,34 @@ class UserEndpointTest extends TestCase
         $this->getJson('api/users/' . $user->id)
             ->assertStatus(401);
     }
+
+    /**
+     * Teste de endpoint de usuário, deve retornar 404
+     *
+     * @return void
+     */
+    public function test_get_user_endpoint_not_found(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user, 'sanctum')
+            ->getJson('api/users/999')
+            ->assertNotFound();
+    }
+
+    /**
+     * Teste de endpoint de usuário, deve retornar 403
+     *
+     * @return void
+     */
+    public function test_get_user_endpoint_forbidden(): void
+    {
+        $user = User::factory()->create();
+        $user2 = User::factory()->create();
+
+        $this->actingAs($user, 'sanctum')
+            ->getJson('api/users/' . $user2->id)
+            ->assertForbidden();
+    }
+
 }

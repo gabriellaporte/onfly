@@ -29,17 +29,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Criptografa a senha
-     *
-     * @param string $value
-     * @return void
-     */
-    public function setPasswordAttribute($value): void
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
-
-    /**
      * Mostra as despesas do usuário
      *
      * @return HasMany

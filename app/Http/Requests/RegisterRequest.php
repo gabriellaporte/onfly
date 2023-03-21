@@ -78,4 +78,16 @@ class RegisterRequest extends FormRequest
             $this->error('Erro de validação', 422, $validator->errors()->toArray())
         );
     }
+
+    /**
+     * Criptografa a senha antes de salvar no banco de dados
+     *
+     * @return void
+     */
+    protected function passedValidation()
+    {
+        $this->merge([
+            'password' => bcrypt($this->password)
+        ]);
+    }
 }
