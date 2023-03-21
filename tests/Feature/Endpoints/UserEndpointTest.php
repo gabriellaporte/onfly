@@ -67,4 +67,59 @@ class UserEndpointTest extends TestCase
             ->assertForbidden();
     }
 
+    /**
+     * Teste de endpoint de despesas de usuário, deve retornar 200
+     *
+     * @return void
+     */
+    public function test_get_user_expenses_endpoint_ok(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user, 'sanctum')
+            ->getJson('api/users/' . $user->id . '/expenses')
+            ->assertOk();
+    }
+
+/**
+     * Teste de endpoint de despesas de usuário não logado, deve retornar 401
+     *
+     * @return void
+     */
+    public function test_get_user_expenses_endpoint_without_auth(): void
+    {
+        $user = User::factory()->create();
+
+        $this->getJson('api/users/' . $user->id . '/expenses')
+            ->assertStatus(401);
+    }
+
+    /**
+     * Teste de endpoint de despesas de usuário, deve retornar 404
+     *
+     * @return void
+     */
+    public function test_get_user_expenses_endpoint_not_found(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user, 'sanctum')
+            ->getJson('api/users/999/expenses')
+            ->assertNotFound();
+    }
+
+    /**
+     * Teste de endpoint de despesas de usuário, deve retornar 403
+     *
+     * @return void
+     */
+    public function test_get_user_expenses_endpoint_forbidden(): void
+    {
+        $user = User::factory()->create();
+        $user2 = User::factory()->create();
+
+        $this->actingAs($user, 'sanctum')
+            ->getJson('api/users/' . $user2->id . '/expenses')
+            ->assertForbidden();
+    }
 }

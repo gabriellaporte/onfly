@@ -55,4 +55,27 @@ class AuthEndpointTest extends TestCase
 
         $response->assertOk();
     }
+
+    /**
+     * Testa o login de usuário, caso o login seja mal sucedido, deve retornar 401
+     */
+    public function test_login_endpoint_unauthorized(): void
+    {
+        $response = $this->postJson('/api/auth/login', [
+            'email' => 'algumoutroemail@gmail.com',
+            'password' => 'password'
+        ]);
+
+        $response->assertUnauthorized();
+    }
+
+    /**
+     * Testa o login de usuário, caso o login tenha erro de validação, deve retornar 422
+     */
+    public function test_login_endpoint_unprocessable_entity(): void
+    {
+        $response = $this->postJson('/api/auth/login');
+
+        $response->assertStatus(422);
+    }
 }
