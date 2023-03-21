@@ -81,9 +81,9 @@ class UpdateExpenseRequest extends FormRequest
     private function putRules(): array
     {
         return [
-            'description' => 'required|string|max:191',
-            'amount' => 'required|numeric|min:0|not_in:0',
-            'date' => 'required|date_format:Y-m-d H:i:s|before_or_equal:now',
+            'description' => ['required', 'string', 'max:191'],
+            'amount' => ['required', 'numeric', 'min:0', 'not_in:0'],
+            'date' => ['required', 'date_format:Y-m-d H:i:s', 'before_or_equal:now'],
         ];
     }
 
@@ -95,9 +95,9 @@ class UpdateExpenseRequest extends FormRequest
     private function patchRules(): array
     {
         return [
-            'description' => 'nullable|string|max:191',
-            'amount' => 'nullable|numeric|min:0|not_in:0',
-            'date' => 'nullable|date_format:Y-m-d H:i:s|before_or_equal:now',
+            'description' => ['nullable', 'string', 'max:191'],
+            'amount' => ['nullable', 'numeric', 'min:0', 'not_in:0'],
+            'date' => ['nullable', 'date_format:Y-m-d H:i:s', 'before_or_equal:now'],
         ];
     }
 }

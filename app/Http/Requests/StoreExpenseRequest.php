@@ -35,10 +35,10 @@ class StoreExpenseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => 'required|string|max:191',
-            'user_id' => 'required|integer|exists:users,id',
-            'amount' => 'required|numeric|min:0|not_in:0',
-            'date' => 'required|date_format:Y-m-d H:i:s|before_or_equal:now',
+            'description' => ['required', 'string', 'max:191'],
+            'user_id' => ['required', 'integer', 'exists:users,id'],
+            'amount' => ['required', 'numeric', 'min:0', 'not_in:0'],
+            'date' => ['required', 'date_format:Y-m-d H:i:s', 'before_or_equal:now'],
         ];
     }
 

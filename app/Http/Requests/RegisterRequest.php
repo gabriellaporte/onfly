@@ -34,9 +34,9 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'unique:users,email', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'max:255'],
         ];
     }
 
@@ -49,11 +49,14 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name.required' => 'O campo name é obrigatório',
+            'name.max' => 'O nome deve ter no máximo 255 caracteres',
             'email.required' => 'O campo email é obrigatório',
             'email.email' => 'O e-mail informado não é válido',
             'email.unique' => 'O e-mail informado já está em uso',
+            'email.max' => 'O e-mail deve ter no máximo 255 caracteres',
             'password.required' => 'O campo password é obrigatório',
             'password.min' => 'A senha deve ter no mínimo 8 caracteres',
+            'password.max' => 'A senha deve ter no máximo 255 caracteres',
         ];
     }
 }
