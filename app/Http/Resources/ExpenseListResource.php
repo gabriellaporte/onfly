@@ -28,7 +28,7 @@ class ExpenseListResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'description' => $this->description,
-            'value' => $this->amount,
+            'amount' => $this->amount,
             'date' => $this->date,
             '_links' => [
                 'user' => ['href' => route('api.users.show', $this->user_id)],

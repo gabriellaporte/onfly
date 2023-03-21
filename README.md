@@ -1,66 +1,101 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
+<h1 align="center">
+  <img alt="cgapp logo" src="https://i.imgur.com/uuNxqx8.png" width="224px"/><br/>
+  Onfly Rest | API Rest
+</h1>
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    Um teste técnico com <b>backend</b> (Laravel), <b>ambiente de desenvolvimento facilitado</b> (Docker, Sail), <b>requisições prontas</b> (Insomnia) e <b>documentação impecável</b> (Swagger).
+    <br/>
+    <br/>
+    Código <b>limpo</b>, <b>bem feito</b>, bem <b>documentado</b> e <b>performático</b>! É tudo isso e mais um pouco.
 </p>
 
-## About Laravel
+<hr>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<br />
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<div align="center">
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**[FILOSOFIA DO PROJETO](https://github.com/gabriellaporte/onfly) •
+[TECH STACK](https://github.com/gabriellaporte/onfly) •
+[CONSIDERAÇÕES FINAIS](https://github.com/gabriellaporte/onfly)**
 
-## Learning Laravel
+</div>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<br />
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# ☄ Filosofia do projeto
+> O Onfly Rest foi desenvolvido como um teste técnico para a empresa Onfly, para concorrer à vaga de Desenvolvedor Pleno backend.
+>
+> A proposta é uma API, seguindo a arquitetura REST, que deverá conter um CRUD simples de despesas relacionadas a um usuário.
+>
+> E isso qualquer um faz. O diferencial do projeto, é que ele desenvolvido e pensado totalmente em: usar <b>Design Patterns</b>, seguir as boas práticas de <b>Clean Code</b> (SOLID, Object Calisthenics, etc.), seguir a filosofia <b>TDD</b> (Test Driven Development) e muito mais.
+> Um outro foco do projeto foi fazer a documentação e a aplicação de comentários de forma organizada, tanto no código, quanto neste README que você está acessando, quanto em outros locais, como o Swagger (documentação da API), etc.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<br />
 
-## Laravel Sponsors
+# 💻 Tech Stack
+<br>
+Aqui está uma breve visão geral de alto nível da Tech Stack utilizada no projeto:
+<br /><br />
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+- Este projeto utiliza [o framework Laravel](https://laravel.com). Laravel é um framework backend em PHP poderosíssimo que segue a arquitetura MVC, deixando o desenvolvedor livre do fardo de lidar com "pequenos detalhes" de uma aplicação.
+- Como banco de dados, o projeto utiliza o [MySQL](https://www.mysql.com), mas pode facilmente ser adaptado a outros RDBMS.
+- Para os testes, é utilizado o [PHPUnit](https://phpunit.de), que já está incluido no Laravel.
+- Para o versionamento, foi utilizado o CVS [Git](https://git-scm.com).
+- Para o set-up no ambiente de desenvolvimento, foi utilizado o [Docker](https://www.docker.com) com o [Sail](https://laravel.com/docs/10.x/sail) (já incluso no Laravel)
+- Para o servidor de e-mail, foi utilizado o [MailHog](https://github.com/mailhog/MailHog).
+- Claramente, devido à necessidade de ferramentas de alto-nível, foi utilizado o Linux, com a distro [Ubuntu](https://ubuntu.com).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+<br />
 
-## Contributing
+# ⚡️ Como Instalar
+<br>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Primeiramente, [instale](https://www.php.net/downloads.php) o PHP 8^.
+> 🐱‍💻 Se você estiver procurando por uma instalação via CLI, no Ubuntu por exemplo, você pode encontrar [aqui](https://tecadmin.net/how-to-install-php-on-ubuntu-22-04/).
 
-## Code of Conduct
+- [Baixe e instale](https://getcomposer.org/download/), também, o Composer como gerenciador de dependências.
+> 🐱‍💻 Como dito acima, se você procura algo mais específico e rápido para CLI, você pode encontrar um tutorial [aqui](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-composer-on-ubuntu-20-04).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Acesse algum diretório de sua preferência e baixe o projeto, usando:
+```
+git clone https://github.com/gabriellaporte/onfly.git .
+```
+> 🎈 Se você tiver problemas com a autenticação do Github (o token), você pode ver um tutorial [aqui](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
-## Security Vulnerabilities
+- Agora que os arquivos foram devidamente baixados para o seu diretório, configure o seu arquivo .env com base no arquivo .env.example:
+```
+cp .env.example .env
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Gere uma chave (APP_KEY) no seu .env
+```
+php artisan key:generate
+```
 
-## License
+- Instale todas as dependências e pacotes necessários para o projeto poder rodar:
+```
+composer update
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Se você estiver no Linux, MacOS ou no WSL2 pelo Windows, você pode facilmente ligar o projeto utilizando:
+```
+sail up -d
+```
+> ⏳ Isto pode levar algum tempo para buildar as imagens, caso você não tenha usado o Docker antes. Não se preocupe, acabará antes que você perceba.
+>
+> 🤔 Note que, daqui em diante, comandos PHP serão substituídos por "sail" (`alias sail="./vendor/bin/sail"`) , porém se você não usar Docker, utilize "php" mesmo.
+
+- Crie as tabelas e popule elas com as Seeds de factories do Laravel, usando migrations:
+```
+sail artisan migrate --seed
+```
+
+- Lembre-se de deixar um "[worker](https://laravel.com/docs/10.x/queues#running-the-queue-worker)" rodando para o envio de e-mail assíncrono 🚨
+```
+sail artisan queue:work
+```
+> 📩 Você pode acessar o envio de e-mails [aqui](http://localhost:8025), com o Docker/Sail. Ou sinta-se livre para configurar um novo em .env.
+
+✅ Pronto! Agora você está pronto para usar o projeto na sua máquina com essas etapas simples.
